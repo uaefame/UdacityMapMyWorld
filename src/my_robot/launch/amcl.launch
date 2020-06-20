@@ -11,9 +11,31 @@
   	<param name="odom_model_type" value="diff-corrected"/>
  	<param name="base_frame_id" value="robot_footprint"/>
 	<param name="global_frame_id" value="map"/>
-    <!-- If you choose to define initial pose here -->
-    <param name="initial_pose_x" value="100"/>
-    <param name="initial_pose_y" value="500"/>
+
+<!-- Overall filter -->
+    <param name="initial_pose_x" value="0"/> <!-- Best=-0.85, but project wants=0.0 -->
+    <param name="initial_pose_y" value="0"/> <!-- Best=-20, but project wants=0.0 -->
+	<param name="initial_pose_a" value="1.5708"/> 
+	<param name="min_particles" value="1000"/> <!-- default=100-->
+	<param name="max_particles" value="10000"/> <!-- default=5000-->
+	<param name="update_min_a" value="3.1415926536/5.0"/> <!--default= π/6.0 radians-->
+	<param name="update_min_d" value="0.2"/> <!-- default=0.2 meters-->
+	
+<!-- Laser -->
+	<param name="laser_min_range" value="-10"/> <!-- default=-10, use the minimum value-->
+	<param name="laser_max_range" value="-10"/> <!-- default=-10 use the maximum value-->
+	<param name="laser_max_beams" value="30"/> <!-- default= 30 evenly-spaced beams is used per scan-->
+	<param name="laser_z_hit" value="0.95"/> <!-- default=0.95, Mixture weight for the z_hit part of the model-->
+	<param name="laser_z_rand" value="0.05"/> <!-- default=0.05, Mixture weight for the z_rand part of the model -->
+	
+<!-- Odometer -->
+	<param name="odom_alpha1" value="0.01"/> <!-- default=0.2-->
+	
+	<!-- odom_alpha1 (double, default: 0.2) Specifies the expected noise in odometry's rotation estimate from the rotational component of the robot's motion -->
+	<!-- odom_alpha2 (double, default: 0.2) Specifies the expected noise in odometry's rotation estimate from translational component of the robot's motion -->
+	<!-- odom_alpha3 (double, default: 0.2) Specifies the expected noise in odometry's translation estimate from the translational component of the robot's motion -->
+	<!-- odom_alpha4 (double, default: 0.2) Specifies the expected noise in odometry's translation estimate from the rotational component of the robot's motion -->
+	
  </node>
 
 <!-- TODO: Move Base Node -->
