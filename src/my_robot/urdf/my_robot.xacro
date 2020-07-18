@@ -139,13 +139,47 @@
 		</collision>
 	</link>
 
+  <joint name="camera_optical_joint" type="fixed">
+    <origin xyz="0.25 0 0" rpy="-1.5707 0 -1.5707"/>
+    <parent link="chassis"/> <!-- IT was camera_link -->
+    <child link="camera_link_optical"/>
+  </joint>
+
+  <link name="camera_link_optical">
+		<inertial>
+			<origin xyz="0.0 0 0" rpy=" 0 0 0"/>
+			<box_inertia m="0.1" x="0.05" y="0.05" z="0.05"/>
+			<mass value="0.1"/>   
+     		<inertia
+          		ixx="1e-6" ixy="0" ixz="0"
+          		iyy="1e-6" iyz="0"
+          		izz="1e-6"
+      		/>
+		</inertial>
+		<visual>
+			<origin xyz="0.0 0 0" rpy=" 0 0 0"/>
+			<geometry>
+        			<box size="0.05 0.05 0.05"/>
+      			</geometry>
+		</visual>
+		<collision>
+			<origin xyz="0.0 0 0" rpy=" 0 0 0"/>
+			<geometry>
+        			<box size="0.05 0.05 0.05"/>
+      			</geometry>
+		</collision>
+  </link>
+
+<!-- Old camera joint was commented 
   <joint type="fixed" name="camera_joint">
     <origin xyz="0.25 0 0" rpy="0 0 0"/>
     <child link="camera"/>
     <parent link="chassis"/>
     <axis xyz="0 1 0" rpy="0 0 0"/>
   </joint>
+-->
 
+<!-- Old camera link was commented 
 	<link name='camera'>
 		<inertial>
 			<origin xyz="0.0 0 0" rpy=" 0 0 0"/>
@@ -170,7 +204,7 @@
       			</geometry>
 		</collision>
 	</link>
-
+-->
   <joint type="fixed" name="hokuyo_joint">
     <origin xyz="0.20 0 0.075" rpy="0 0 0"/>
     <child link="hokuyo"/>
